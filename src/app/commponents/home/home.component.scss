@@ -1,0 +1,29 @@
+.table, .graphics{
+    @media screen and(min-width: 34em){
+        width: 40%;
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 5%;
+    }
+    display: block;
+    margin: auto;
+    width: 80%;
+    margin-top: 30px;
+}
+.graphicBarr{
+    @media screen and(min-width: 34em){
+        width: 12%;
+    }
+    width: 80%;
+    margin-top: 25px;
+    margin-right: auto;
+    margin-left: auto;
+    background: #333333;
+    color: #F8F8F8;
+    mat-card-actions{
+        margin: auto;
+        button{
+            margin: auto;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+mat-sidenav-container{
+    height: 100%;
+    mat-sidenav{
+        background-color: rgba(250, 140, 6, 0.795);
+        width: 200px;
+        p{
+            border-bottom: dotted;
+            color: #F8F8F8;
+            font-size: larger;
+            font-family: sans-serif;
+            font-variant: small-caps;
+            -webkit-margin-end: 10px;
+            margin-bottom: 3em;
+            cursor: pointer;
+        }
+    }
+    mat-sidenav-content{
+        padding: 0 !important;
+        header{
+            background-color: #D6C15A;
+            border: 0;
+            margin: 0;
+            mat-icon{
+                color: #3f51b5;
+                margin-left: 1%;
+                font-size: xx-large;
+                cursor: pointer;
+            }
+            .auth{
+                position: absolute;
+                right: 0;
+                button{
+                    color: #333333;
+                }
+            }
+            mat-icon, .auth{
+                margin-top: 10px;
+                margin-bottom: 10px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+    }
+    mat-sidenav, mat-sidenav-content{
+        padding: 16px;
+    }
+}

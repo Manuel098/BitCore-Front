@@ -1,0 +1,7 @@
+<mat-card-header>
+    <p>Grafico de Barras</p>
+</mat-card-header>
+<mat-card-content>
+    <canvas baseChart [datasets]="ChartData" [labels]="ChartLabels"
+        [colors]="ChartColors" [chartType]="ChartType" [plugins]="ChartPlugins"></canvas>
+</mat-card-content>

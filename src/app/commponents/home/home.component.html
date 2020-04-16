@@ -1,0 +1,19 @@
+
+<mat-card class="graphicBarr">
+    <mat-card-actions>
+        <button mat-button (click)="selection = 'barra'">Barras</button>
+        <button mat-button (click)="selection = 'line'">Lineas</button>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card class="graphics" [ngSwitch]="selection">
+    <div *ngSwitchDefault> 
+        <p>En la parte superior se presentan varias opciones para generar graficas acordes a la preferencia del usuario.</p> 
+        <p>Mientras que a la derecha podemos observar la tabla general con toda la información relevante al tema.</p>
+    </div>
+    <app-bar *ngSwitchCase="'barra'"></app-bar>
+    <app-lines *ngSwitchCase="'line'"></app-lines>
+</mat-card>
+
+
+<app-data-graphics class="table"></app-data-graphics>
