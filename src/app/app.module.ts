@@ -22,6 +22,9 @@ import { DataGraphicsComponent } from './commponents/tables/data-graphics/data-g
 import { BarComponent } from './commponents/graphics/bar/bar.component';
 import { SignInComponent } from './commponents/auth/sign-in/sign-in.component';
 import { SignUpComponent } from './commponents/auth/sign-up/sign-up.component';
+import { SocketService } from './socket.service';
+import { AuthService } from './commponents/auth/auth.service';
+import { ProfileComponent } from './commponents/profile/profile.component';
 
 const material = [
   MatButtonToggleModule, MatTableModule, MatIconModule, MatProgressSpinnerModule, MatInputModule, MatCardModule,
@@ -39,7 +42,8 @@ const forms = [ReactiveFormsModule, FormsModule];
     DataGraphicsComponent,
     BarComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    ProfileComponent
   ],
   imports: [
     forms,
@@ -50,8 +54,8 @@ const forms = [ReactiveFormsModule, FormsModule];
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [SocketService, AuthService],
   bootstrap: [AppComponent],
-  entryComponents: [SignInComponent]
+  entryComponents: [SignInComponent, SignUpComponent]
 })
 export class AppModule { }

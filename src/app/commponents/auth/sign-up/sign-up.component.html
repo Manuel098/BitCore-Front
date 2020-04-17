@@ -1,1 +1,27 @@
-<p>sign-up works!</p>
+<mat-card>
+    <mat-card-header>Registrar Usuario</mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="options">
+            <mat-form-field appearance="fill">
+                <mat-label>Nombre de Usuario</mat-label>
+                <input matInput formControlName="username" [(ngModel)]="data.username" >
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Correo</mat-label>
+                <input type="email" matInput formControlName="email" [(ngModel)]="data.email" email>
+            </mat-form-field>
+            <mat-form-field class="password" appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput formControlName="password1" [(ngModel)]="data.password1" >
+            </mat-form-field>
+            <mat-form-field class="password" appearance="fill">
+                <mat-label>Confirmar Contraseña</mat-label>
+                <input type="password" matInput formControlName="password2" [(ngModel)]="data.password2" >
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Continuar</button>
+        <button mat-button (click)="onNoClick()">Cancelar</button>
+    </mat-card-actions>
+</mat-card>

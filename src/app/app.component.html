@@ -1,15 +1,20 @@
 <mat-sidenav-container>
   <mat-sidenav mode="push" [(opened)]="opened">
       <p (click)="route('')">Inicio</p>
-      <a href=""></a>
+      <div *ngIf="auth">
+        <p (click)="route('profile')">Perfil</p>
+      </div>
   </mat-sidenav>
   <mat-sidenav-content>
       <header>
           <mat-icon mat-button color="primary" (click)="opened=!opened">menu</mat-icon>
-          <div class="auth">
+          <div class="auth" *ngIf="!auth">
               <button mat-button color="primary" (click)="signIn()">Iniciar Sesión</button>
               <button mat-button color="primary" (click)="signUp()">Registro</button>
           </div>
+          <div class="auth" *ngIf="auth">
+            <button mat-button color="primary" (click)="logOut()">Cerrar Sesión</button>
+        </div>
       </header>
       <div><router-outlet></router-outlet></div>
   </mat-sidenav-content>

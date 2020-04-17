@@ -1,39 +1,14 @@
 <mat-card>
-    <mat-card-header>Agregar Personaje</mat-card-header>
+    <mat-card-header>Iniciar Sesión</mat-card-header>
     <mat-card-content>
         <form [formGroup]="options">
-            <mat-form-field id="caracter" appearance="fill">
-                <mat-label>Caracteristica</mat-label>
-                <input matInput formControlName="value" #input maxlength="25" placeholder="Ex. Nougat">
-                <mat-hint align="end">{{input.value?.length || 0}}/25</mat-hint>
+            <mat-form-field appearance="fill">
+                <mat-label>Correo</mat-label>
+                <input type="email" matInput formControlName="email" [(ngModel)]="data.email" email>
             </mat-form-field>
-
-            <mat-form-field *ngIf="checked" id="caracter" appearance="fill">
-                <mat-label>Nueva Caracteristica</mat-label>
-                <input matInput formControlName="newCar" #input maxlength="25" placeholder="Ex. Nougat">
-                <mat-hint align="end">{{input.value?.length || 0}}/25</mat-hint>
-            </mat-form-field>
-        
-            <mat-form-field *ngIf="!checked" id="caracter" appearance="fill">
-                <mat-label >Tipo de Caracteristica</mat-label>
-                <mat-select [(value)]="newCaract">
-                    <div *ngFor="let carac of caracter">
-                        <mat-option value="{{carac['id']}}" (click)="print(carac)">{{carac['charName']}}</mat-option>
-                    </div>
-                </mat-select>
-            </mat-form-field>
-
-            <button mat-stroked-button (click)="add()">Agregar Caracteristica</button>
-
-
-
-            <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
-                <mat-label>Nombre</mat-label>
-                <input matInput formControlName="username" [(ngModel)]="data.username" placeholder="Ingrese nombre">
-            </mat-form-field>
-            <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
-                <mat-label>URL</mat-label>
-                <input matInput formControlName="user_url" [(ngModel)]="data.user_url" placeholder="Ingrese el link de la imagen">
+            <mat-form-field appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput formControlName="password" [(ngModel)]="data.password" >
             </mat-form-field>
         </form>
     </mat-card-content>
