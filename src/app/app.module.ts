@@ -25,6 +25,7 @@ import { SignUpComponent } from './commponents/auth/sign-up/sign-up.component';
 import { SocketService } from './socket.service';
 import { AuthService } from './commponents/auth/auth.service';
 import { ProfileComponent } from './commponents/profile/profile.component';
+import { ComprasComponent } from './commponents/tables/compras/compras.component';
 
 const material = [
   MatButtonToggleModule, MatTableModule, MatIconModule, MatProgressSpinnerModule, MatInputModule, MatCardModule,
@@ -43,7 +44,8 @@ const forms = [ReactiveFormsModule, FormsModule];
     BarComponent,
     SignInComponent,
     SignUpComponent,
-    ProfileComponent
+    ProfileComponent,
+    ComprasComponent,
   ],
   imports: [
     forms,

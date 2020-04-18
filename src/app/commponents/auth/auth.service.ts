@@ -4,17 +4,20 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { logging } from 'protractor';
 import { Urls } from '../../urls';
+import { SocketService } from '../../socket.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
   private isAuthenticated = false;
   private token: string;
+  private user: any;
+  private wallet:any;
   private tokenTimer: any;
   private lastSecionTimer: any;
   private userId: string;
   private authStatusListener = new Subject<boolean>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient,private Sock:SocketService, private router: Router) {}
   
   getToken() {
     return this.token;
@@ -24,6 +27,12 @@ export class AuthService {
   }
   getUserId() {
     return this.userId;
+  }
+  getUser() {
+    return this.user;
+  }
+  getWallet() {
+    return this.wallet;
   }
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
@@ -43,6 +52,16 @@ export class AuthService {
         const expiresInDuration = response['expiresIn'];
         this.setAuthTimer(expiresInDuration);
         this.isAuthenticated = true;
+        this.user = {
+          name:response['user']['user'],
+          id:response['user']['_id'],
+          mail:response['user']['email']
+        };
+        this.wallet = {
+          history:response['Monedero']['Historial'],
+          cantidad:response['Monedero']['cantidad'],
+          id:response['Monedero']['_id']
+        }
         this.userId = response['user']['_id'];
         this.authStatusListener.next(true);
         const now = new Date();
@@ -50,7 +69,9 @@ export class AuthService {
           now.getTime() + expiresInDuration * 1000
         );
         this.saveAuthData(token, expirationDate, this.userId);
-        this.router.navigate(['/index']);
+        // this.router.navigate(['/index']);
+
+        this.Sock.onSubscribing(this.user);
         console.log(this.isAuthenticated);
       }
     }, error => {
@@ -73,6 +94,16 @@ export class AuthService {
           const expiresInDuration = response['expiresIn'];
           this.setAuthTimer(expiresInDuration);
           this.isAuthenticated = true;
+          this.user = {
+            name:response['user']['user'],
+            id:response['user']['_id'],
+            mail:response['user']['email']
+          };
+          this.wallet = {
+            history:response['Monedero']['Historial'],
+            cantidad:response['Monedero']['cantidad'],
+            id:response['Monedero']['_id']
+          }
           this.userId = response['user']['_id'];
           this.authStatusListener.next(true);
           const now = new Date();
@@ -80,7 +111,9 @@ export class AuthService {
             now.getTime() + expiresInDuration * 1000
           );
           this.saveAuthData(token, expirationDate, this.userId);
-          this.router.navigate(['/']);
+          // this.router.navigate(['/']);
+
+          this.Sock.onSubscribing(this.user);
         }
       }, error => {
         alert('Usuario o contraseña invalido!!');

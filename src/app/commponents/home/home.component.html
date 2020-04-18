@@ -7,10 +7,10 @@
 </mat-card>
 
 <mat-card class="graphics" [ngSwitch]="selection">
-    <div *ngSwitchDefault> 
+    <mat-card-content *ngSwitchDefault> 
         <p>En la parte superior se presentan varias opciones para generar graficas acordes a la preferencia del usuario.</p> 
         <p>Mientras que a la derecha podemos observar la tabla general con toda la información relevante al tema.</p>
-    </div>
+    </mat-card-content>
     <app-bar *ngSwitchCase="'barra'"></app-bar>
     <app-lines *ngSwitchCase="'line'"></app-lines>
 </mat-card>

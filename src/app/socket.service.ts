@@ -13,9 +13,13 @@ export class SocketService {
   private socket = io(Urls.baseURL);
   constructor() { }
 
+  onSubscribing(user:any){
+    this.socket.emit('Subscribing', user);
+  }
+
   getData() {
     const observable = new Observable(observer => {
-      this.socket.on('Subscribing');
+      // this.socket.on('Subscribing');
     });
     return observable;
   }

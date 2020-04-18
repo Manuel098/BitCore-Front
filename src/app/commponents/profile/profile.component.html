@@ -1,3 +1,26 @@
-<div class="content">
-    <p>Profile Works</p>
+<div class="content" *ngIf="user">
+    <div class="fila">
+        <mat-card class="first">
+            <mat-card-header> <h2>{{user['name']}}</h2> </mat-card-header>
+        </mat-card>
+        <mat-card class="Second">
+            <mat-card-actions>
+                <button mat-button class="new" (click)="print()"><span class="material-icons">fiber_new</span></button>
+                <button mat-button class="conf" (click)="print()"><span class="material-icons">settings</span></button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="fila">
+        <mat-card class="first">
+            <mat-card-header>Historial de transacciones</mat-card-header>
+            <mat-card-content>
+                <app-compras></app-compras>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="Second">
+            <mat-card-content>
+                
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
