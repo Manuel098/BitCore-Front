@@ -1,5 +1,5 @@
 .table, .graphics{
-    @media screen and(min-width: 34em){
+    @media screen and(min-width: 40em){
         width: 40%;
         display: inline-block;
         vertical-align: top;
@@ -10,8 +10,24 @@
     width: 80%;
     margin-top: 30px;
 }
+mat-card{
+    mat-card-header{
+        h2{
+            font-family: unset;
+            font-weight: 400;
+            margin: 10px 0;
+        }
+    }
+    mat-card-content{
+        font-weight: 500;
+        font-size: medium;
+        margin: 10px 0 0 0;
+        text-align: justify;
+        font-family: inherit;
+    }
+}
 .graphicBarr{
-    @media screen and(min-width: 34em){
+    @media screen and(min-width: 40em){
         width: 12%;
     }
     width: 80%;

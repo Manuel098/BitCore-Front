@@ -1,0 +1,57 @@
+mat-card{
+    mat-card-header{
+        h2{
+            margin: auto;
+            font-family: inherit;
+            font-weight: 400;
+            padding-bottom: 15px;
+            font-variant-caps: normal;
+        }
+    }
+    mat-card-content{
+        form{
+            width: 100%;
+            .content{
+                width: 30%;
+                mat-radio-group{
+                    label{
+                        margin-bottom: 20px;
+                        font-family: unset;
+                        font-weight: bolder;
+                    }
+                    mat-radio-button{
+                        margin-bottom: 5px;
+                    }
+                    display: flex;
+                    flex-direction: column;
+                    margin: 15px 0;
+                }
+            }            
+            mat-form-field{
+                width: 60%;
+            }
+            .content, mat-form-field{
+                display: inline-block;
+                vertical-align: middle;
+            }
+        }
+    }
+    mat-card-actions{
+        width: 35%;
+        margin: auto;
+        padding-bottom:3px;
+        button{
+            color: whitesmoke;
+            font-family: sans-serif;
+            font-weight: 500;
+            font-variant-caps: all-petite-caps;
+            font-size: large;
+        }
+        #continue{
+            background-color: #D6C15A;
+        }
+        #cancel{
+            background-color: #ff2424;
+        }
+    }
+}

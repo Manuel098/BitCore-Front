@@ -8,6 +8,19 @@ mat-form-field{
     width: 100%;
 }
 mat-card-actions{
-    width: 30%;
+    width: 35%;
     margin: auto;
+    button{
+        color: whitesmoke;
+        font-family: sans-serif;
+        font-weight: 500;
+        font-variant-caps: all-petite-caps;
+        font-size: large;
+    }
+    #continue{
+        background-color: #D6C15A;
+    }
+    #cancel{
+        background-color: #ff2424;
+    }
 }

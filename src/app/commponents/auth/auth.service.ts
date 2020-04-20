@@ -13,7 +13,6 @@ export class AuthService {
   private user: any;
   private wallet:any;
   private tokenTimer: any;
-  private lastSecionTimer: any;
   private userId: string;
   private authStatusListener = new Subject<boolean>();
 
@@ -36,6 +35,10 @@ export class AuthService {
   }
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
+  }
+
+  pushInWallet(mesage:string,  element:any){
+    this.wallet['history'][0][mesage].push([element[0],element[1]]);
   }
 
   // 'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hbkBtYWlsLmNvbSIsInVzZXJJZCI6IjVlOTYyYmQxNjQ0NzJlNGIyYzBhNzA0NyIsImlhdCI6MTU4NzAwOTU5MywiZXhwIjoxNTg3MDEzMTkzfQ.fh7_eXJbwhr0sBgm_Sp_cVxbAwUrhctMCGgToikuf9k'
@@ -69,10 +72,8 @@ export class AuthService {
           now.getTime() + expiresInDuration * 1000
         );
         this.saveAuthData(token, expirationDate, this.userId);
-        // this.router.navigate(['/index']);
 
         this.Sock.onSubscribing(this.user);
-        console.log(this.isAuthenticated);
       }
     }, error => {
       alert('Usuario o contraseña invalido!!');
@@ -87,7 +88,6 @@ export class AuthService {
         authData
       )
       .subscribe(response => {
-        console.log(response);
         const token = response['token'];
         this.token = token;
         if (token) {
@@ -111,7 +111,6 @@ export class AuthService {
             now.getTime() + expiresInDuration * 1000
           );
           this.saveAuthData(token, expirationDate, this.userId);
-          // this.router.navigate(['/']);
 
           this.Sock.onSubscribing(this.user);
         }
@@ -129,6 +128,7 @@ export class AuthService {
     this.isAuthenticated = false;
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
+    this.router.navigate(['/']);
   }
 
   autoAuthUser() {
@@ -148,10 +148,7 @@ export class AuthService {
   }
 
   private timeOut(){
-    this.http.post(Urls.baseURL + '/users/logOut', {
-      lastSession: this.lastSecionTimer,
-      userId: this.userId
-    });
+    this.http.get(Urls.baseURL + '/api/user/logOut/'+this.userId).subscribe(asd=>{});
   }
   // Auth Data
   private setAuthTimer(duration: number) {

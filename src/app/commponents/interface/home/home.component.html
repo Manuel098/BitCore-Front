@@ -1,0 +1,26 @@
+
+<mat-card class="graphicBarr" *ngIf="authStat">
+    <mat-card-actions>
+        <button mat-button (click)="selection = 'barra'">Barras</button>
+        <button mat-button (click)="selection = 'line'">Lineas</button>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card class="graphics" *ngIf="authStat" [ngSwitch]="selection">
+    <mat-card-content *ngSwitchDefault> 
+        <p>En la parte superior se presentan varias opciones para generar graficas acordes a la preferencia del usuario.</p> 
+        <p>Mientras que a la derecha podemos observar la tabla general con toda la información relevante al tema.</p>
+    </mat-card-content>
+    <app-bar *ngSwitchCase="'barra'"></app-bar>
+    <app-lines *ngSwitchCase="'line'"></app-lines>
+</mat-card>
+
+<mat-card *ngIf="!authStat" class="graphics">
+    <mat-card-header><h2>Cotisacion de Bitcoin</h2></mat-card-header>
+    <mat-card-content >
+        <p>Actualmente el Bitcoin tiene un precio en el mercado de {{bitcoinData['market_price_usd']}} dolares, teniendo en la actualidad un total aproximado de {{bitcoinData['totalbc']}}, siendo un total de {{bitcoinData['n_blocks_total']}} bloques.</p> 
+        <p>Se estima que el volumen de transacción es de {{bitcoinData['estimated_transaction_volume_usd']}} dólares diarios.  El volumen comercial de bitcoin es de {{bitcoinData['trade_volume_btc']}} bloques, con un volumen comercial de {{bitcoinData['trade_volume_usd']}} dólares siendo un total de {{bitcoinData['total_btc_sent']}} bitcoins enviados.</p>
+    </mat-card-content>
+</mat-card>
+
+<!-- <app-data-graphics class="table"></app-data-graphics> -->

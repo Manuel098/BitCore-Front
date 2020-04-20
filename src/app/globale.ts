@@ -8,5 +8,12 @@ import { Urls } from './urls';
 export class Globals {
     constructor(private http: HttpClient, private router: Router) {}
 
-    
+    bitcoinStatus(){
+        return new Promise( res => {
+            this.http.get(Urls.baseURL + '/api/block')
+            .subscribe( response => {
+                res(response['btcData']);
+            });
+        });
+    }
 }

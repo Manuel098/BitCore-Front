@@ -1,0 +1,67 @@
+.content{
+    margin: 20px;
+    .fila{
+        margin-bottom: 30px;
+        mat-card{
+            @media screen and(min-width: 40em){
+                display: inline-block;
+                vertical-align: middle;
+                margin: 0 3%;
+            }
+            display: block;
+            margin-bottom: 15px;
+            height: 30px;
+            mat-card-header{
+                h2{
+                    margin: 0;
+                    font-family: sans-serif;
+                    font-weight: 500;
+                }
+            }
+            mat-card-actions{
+                padding: 0;
+                .new{
+                    background-color: #18d618;
+                    color: whitesmoke;
+                }
+                .conf{
+                    background-color: #18a5d6;
+                    color: whitesmoke;
+                }
+                button{
+                    span{
+                        font-size: xx-large;
+                    }
+                }
+            }
+        }
+        .first{
+            @media screen and(min-width: 40em){
+                width: 70%;
+            }
+            width: 90%;
+            margin: auto;
+            font-size: smaller;
+        }
+        .first-b{
+            width: 100%;
+            div{
+                @media screen and(min-width: 40em){
+                    display: inline-block;
+                    width: 29%;
+                    margin: 0 2%;
+                }
+                display: block;
+                width: 70%;
+                margin: auto;
+            }
+        }
+        .Second{
+            @media screen and(min-width: 40em){
+                width: 10.5%;
+            }
+            width: 40%;
+            margin: auto;
+        }
+    }
+}
